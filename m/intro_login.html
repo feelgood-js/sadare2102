@@ -1,0 +1,51 @@
+<?
+include_once("top4.php");
+
+$shopconfig = shopconfig();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>인트로</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style type="text/css">
+        @font-face {
+    font-family: 'ImcreSoojin';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/ImcreSoojin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+        .int_ul>li>a{display: block;width: 100%;height: 100%;}
+        .hjj{font-family: 'ImcreSoojin',sans-serif;font-size: 4.555vw !important;}
+    </style>
+</head>
+<body  class="int_bb">
+    <div class="int_b">
+        <h1 style="margin-bottom: 3.333vw;">사다리</h1>
+        <h3 class="hjj">후기로 돈 버는 쇼핑</h3>
+    </div>
+
+	
+		<!-- SNS 로그인 버튼 -->
+		<ul class="int_ul2">
+		<?php if ($_data->sns_login_type == "Y" && count($arSnsinfo) > 0) { ?>
+			<?php
+			if ($arSnsinfo["nhn"]["state"] == "Y") {
+				echo "<li>".$naver->login()."</li>";
+			}
+			if ($arSnsinfo["kko"]["state"] == "Y") {
+				echo "<li>".$kakao->login()."</li>";
+			}
+			if ($arSnsinfo["fb"]["state"] == "Y") {
+				echo "<li>".$facebook->login()."</li>";
+			}
+			?>
+		
+		<?php } ?>	    
+		<li><a href="/m/login.php">사다리 아이디로 로그인</a></li>
+    </ul>
+</body>
+</html>
